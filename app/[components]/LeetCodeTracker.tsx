@@ -80,7 +80,7 @@ export default function LeetCodeTrackerWithDate() {
           value={medium}
           onChange={(e) => setMedium(Number(e.target.value))}
           className="border px-3 py-2 rounded w-24"
-          min={1}
+          min={0}
         />
         <input
           type="number"
