@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+    themes: light, dark, cupcake;
+}
+
+/* Hide scrollbars in all browsers */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, and Edge */
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;      /* Firefox */
+}
+
+
+.no-select {
+    user-select: none; /* Disables text selection */
+}
