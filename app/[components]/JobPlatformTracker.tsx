@@ -76,6 +76,7 @@ export default function JobPlatformTracker() {
                     value={count}
                     onChange={(e) => setCount(Number(e.target.value))}
                     className="border px-3 py-2 rounded w-24"
+                    min={1}
                 />
                 <button onClick={addEntry} className="bg-gray-800 text-white px-4 py-2 rounded">
                     Add
