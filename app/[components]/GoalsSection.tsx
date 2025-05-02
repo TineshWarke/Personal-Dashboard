@@ -59,7 +59,7 @@ export default function GoalsSection() {
         colorOptions.find((c) => c.value === color)?.className || 'bg-gray-100';
 
     return (
-        <section className="p-4 rounded shadow bg-white space-y-4">
+        <section className="p-4 rounded shadow bg-white space-y-4 h-60 overflow-y-scroll hide-scrollbar">
             <h2 className="text-xl font-semibold">🎯 Goals</h2>
 
             {/* Color Legend */}

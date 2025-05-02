@@ -4,6 +4,8 @@ import LeetCodeTracker from "./[components]/LeetCodeTracker";
 import NotesSection from "./[components]/NotesSection";
 import GoalsSection from "./[components]/GoalsSection";
 import ResetButton from "./[components]/ResetButton";
+import InterviewTracker from "./[components]/InterviewTracker";
+import MotivationBox from "./[components]/MotivationBox";
 
 export default function Home() {
   return (
@@ -13,6 +15,10 @@ export default function Home() {
         <h1 className="text-2xl font-bold">Job Search Tracker – 30 Day Sprint</h1>
         <p className="text-gray-600">{new Date().toDateString()}</p>
       </header>
+
+      <div>
+        <MotivationBox />
+      </div>
 
       {/* 30-Day Plan */}
       <section>
@@ -43,6 +49,10 @@ export default function Home() {
         <section className="bg-white p-4 rounded shadow">
           <GoalsSection />
         </section>
+      </div>
+
+      <div>
+        <InterviewTracker />
       </div>
 
       <div className="flex justify-end">
