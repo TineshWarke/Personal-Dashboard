@@ -6,6 +6,7 @@ import GoalsSection from "./[components]/GoalsSection";
 import ResetButton from "./[components]/ResetButton";
 import InterviewTracker from "./[components]/InterviewTracker";
 import MotivationBox from "./[components]/MotivationBox";
+import JobBoardLinks from "./[components]/JobBoardLinks";
 
 export default function Home() {
   return (
@@ -23,6 +24,10 @@ export default function Home() {
       {/* 30-Day Plan */}
       <section>
         <ThirtyDayPlan />
+      </section>
+
+      <section>
+        <JobBoardLinks />
       </section>
 
       {/* Two-column section */}
