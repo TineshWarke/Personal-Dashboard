@@ -7,6 +7,8 @@ import ResetButton from "./[components]/ResetButton";
 import InterviewTracker from "./[components]/InterviewTracker";
 import MotivationBox from "./[components]/MotivationBox";
 import JobBoardLinks from "./[components]/JobBoardLinks";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -61,7 +63,12 @@ export default function Home() {
       </div>
 
       <div className="flex justify-end">
-        <ResetButton />
+        <div className="flex gap-5">
+          <Link href={'https://tineshwarke-portfolio.vercel.app/'} target="_blank">
+          <Image src={'/coder.png'} height={20} width={40} alt="😎" className="hover:scale-130 transition-transform"/>
+          </Link>
+          <ResetButton />
+        </div>
       </div>
 
     </main>
