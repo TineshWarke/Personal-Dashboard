@@ -24,7 +24,7 @@ const defaultJobBoards: JobBoard[] = [
     { name: "Unstop", url: "https://unstop.com/" },
     { name: "Internshala", url: "https://internshala.com/" },
     { name: "Beep", url: "https://www.eventbeep.com/" },
-    { name: "Instahyre", url: "https://www.instahyre.com/" },,
+    { name: "Instahyre", url: "https://www.instahyre.com/" },
     { name: "Wellfound", url: "https://wellfound.com/jobs" },
     { name: "HackerRank", url: "https://www.hackerrank.com/jobs" },
     { name: "Hirist", url: "https://www.hirist.com/" },
