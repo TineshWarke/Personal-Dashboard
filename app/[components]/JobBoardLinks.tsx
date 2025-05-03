@@ -65,6 +65,13 @@ export default function JobBoardLinks() {
         setShowForm(false);
     };
 
+    const handleDelete = (index: number) => {
+        const updated = [...jobBoards];
+        updated.splice(index, 1);
+        setJobBoards(updated);
+    };
+
+
     return (
         <div className="bg-white p-4 rounded-xl shadow-md w-full">
             <div className="flex items-center justify-between mb-3">
@@ -90,15 +97,27 @@ export default function JobBoardLinks() {
                 className="flex overflow-x-auto space-x-3 scroll-smooth mb-4  overflow-y-scroll hide-scrollbar"
             >
                 {jobBoards.map((board, idx) => (
-                    <a
+                    <div
                         key={idx}
-                        href={board.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-shrink-0 bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-lg px-4 py-2 text-sm font-medium text-gray-800 whitespace-nowrap"
+                        className="relative group flex-shrink-0 bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-lg px-4 py-2 text-sm text-gray-800"
                     >
-                        {board.name}
-                    </a>
+                        <a
+                            href={board.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="whitespace-nowrap font-medium mr-2"
+                        >
+                            {board.name}
+                        </a>
+
+                        <button
+                            onClick={() => handleDelete(idx)}
+                            title="Delete"
+                            className="absolute top-0 right-0 w-5 h-5 rounded-full text-red-500 text-s font-extrabold cursor-pointer flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                        >
+                            ×
+                        </button>
+                    </div>
                 ))}
             </div>
 

@@ -37,23 +37,39 @@ export default function LeetCodeTrackerWithDate() {
 
   const addEntry = () => {
     if (!date) return;
+
     const existingIndex = entries.findIndex((e) => e.date === date);
-    const newEntry = { date, easy, medium, hard };
     if (existingIndex >= 0) {
       const updated = [...entries];
-      updated[existingIndex] = newEntry;
+      updated[existingIndex] = {
+        date,
+        easy: updated[existingIndex].easy + easy,
+        medium: updated[existingIndex].medium + medium,
+        hard: updated[existingIndex].hard + hard,
+      };
       setEntries(updated);
     } else {
-      setEntries((prev) => [...prev, newEntry]);
+      setEntries((prev) => [...prev, { date, easy, medium, hard }]);
     }
 
-    // Reset
+    // Reset input
     setEasy(0);
     setMedium(0);
     setHard(0);
   };
 
   const sortedEntries = [...entries].sort((a, b) => b.date.localeCompare(a.date));
+
+  const decreaseCount = (date: string, type: 'easy' | 'medium' | 'hard') => {
+    setEntries((prev) =>
+      prev.map((entry) => {
+        if (entry.date !== date) return entry;
+        const updated = { ...entry };
+        if (updated[type] > 0) updated[type] -= 1;
+        return updated;
+      })
+    );
+  };
 
   return (
     <section className="bg-white p-4 rounded shadow space-y-4">
@@ -113,11 +129,26 @@ export default function LeetCodeTrackerWithDate() {
             {sortedEntries.map((entry) => (
               <tr key={entry.date} className="border-t">
                 <td className="p-2">{entry.date}</td>
-                <td className="p-2">{entry.easy}</td>
-                <td className="p-2">{entry.medium}</td>
-                <td className="p-2">{entry.hard}</td>
+
+                {(['easy', 'medium', 'hard'] as const).map((type) => (
+                  <td key={type} className="p-2 relative group">
+                    <div className="inline-flex items-center group gap-1">
+                      <span>{entry[type]}</span>
+                      {entry[type] > 0 && (
+                        <button
+                          onClick={() => decreaseCount(entry.date, type)}
+                          className="opacity-0 group-hover:opacity-100 transition-opacity text-red-500 text-s font-extrabold w-4 h-4 rounded-full flex items-center justify-center"
+                          title="Decrease count"
+                        >
+                          −
+                        </button>
+                      )}
+                    </div>
+                  </td>
+                ))}
               </tr>
             ))}
+
           </tbody>
         </table>
       </div>

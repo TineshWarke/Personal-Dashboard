@@ -49,6 +49,19 @@ export default function JobPlatformTracker() {
     const allDates = Object.keys(grouped).sort((a, b) => b.localeCompare(a));
     const allPlatforms = Array.from(new Set(entries.map((e) => e.platform)));
 
+    const decreaseCount = (date: string, platform: string) => {
+        setEntries(prev =>
+            prev
+                .map(entry => {
+                    if (entry.date === date && entry.platform === platform && entry.count > 0) {
+                        return { ...entry, count: entry.count - 1 };
+                    }
+                    return entry;
+                })
+                .filter(entry => entry.count > 0) // remove entries with 0 count
+        );
+    };
+
     return (
         <section className="bg-white p-4 rounded shadow space-y-4">
             <h2 className="text-lg font-semibold">Job Applications by Platform</h2>
@@ -98,9 +111,25 @@ export default function JobPlatformTracker() {
                         {allDates.map((d) => (
                             <tr key={d} className="border-t">
                                 <td className="p-2">{d}</td>
-                                {allPlatforms.map((p) => (
-                                    <td key={p} className="p-2">{grouped[d][p] || 0}</td>
-                                ))}
+                                {allPlatforms.map((p) => {
+                                    const count = grouped[d][p] || 0;
+                                    return (
+                                        <td key={p} className="p-2">
+                                            <div className="inline-flex items-center group gap-1">
+                                                <span>{count}</span>
+                                                {count > 0 && (
+                                                    <button
+                                                        onClick={() => decreaseCount(d, p)}
+                                                        className="opacity-0 group-hover:opacity-100 transition-opacity text-red-500 text-s font-extrabold w-4 h-4 rounded-full flex items-center justify-center"
+                                                        title={`Decrease ${p} on ${d}`}
+                                                    >
+                                                        −
+                                                    </button>
+                                                )}
+                                            </div>
+                                        </td>
+                                    );
+                                })}
                             </tr>
                         ))}
                     </tbody>
