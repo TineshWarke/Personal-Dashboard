@@ -71,12 +71,11 @@ export default function NotesSection() {
 
             {/* Add Note */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-                <input
-                    type="text"
+                <textarea
                     placeholder="Write your note..."
                     value={newNote}
                     onChange={(e) => setNewNote(e.target.value)}
-                    className="flex-1 border px-3 py-2 rounded"
+                    className="flex-1 border px-3 py-2 rounded max-h-14 min-h-14"
                 />
                 <select
                     value={selectedColor}
