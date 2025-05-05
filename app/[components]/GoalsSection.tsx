@@ -115,7 +115,7 @@ export default function GoalsSection() {
                                 type="checkbox"
                                 checked={goal.completed}
                                 onChange={() => toggleGoal(index)}
-                                className="w-5 h-5"
+                                className="w-5 h-5 checkbox"
                             />
                             <span className={`text-sm ${goal.completed ? 'line-through text-green-700 font-medium' : ''}`}>
                                 {goal.text}
