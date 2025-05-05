@@ -101,12 +101,14 @@ export default function NotesSection() {
                 {notes.map((note, index) => (
                     <li
                         key={index}
-                        className={`flex justify-between items-center px-3 py-2 rounded border ${getColorClass(note.color)}`}
+                        className={`relative flex justify-between items-center px-3 py-2 rounded border ${getColorClass(note.color)}`}
                     >
-                        <span>{note.text}</span>
+                        <div className='mr-10'>
+                            <span className='whitespace-pre-line'>{note.text}</span>
+                        </div>
                         <button
                             onClick={() => deleteNote(index)}
-                            className="text-sm text-gray-700 hover:underline"
+                            className="text-sm text-gray-700 hover:text-red-500 absolute right-2 bottom-2"
                         >
                             Delete
                         </button>
